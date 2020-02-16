@@ -3,12 +3,23 @@ class AuthenModel extends CI_model {
 
 	public function __construct(){
         parent::__construct();
-    }
+	}
+	
+	//ใช้สำหรับ ล็อคอิน
+	public function login($username,$password)
+	{
+		$sql = "SELECT * from users 
+		where username ='".$username."' 
+		and password ='".$password."'";
+		$result = $this->db->query($sql);
+        $arrResult = $result->result();
+		return $arrResult;
+	}
 
 	//ใช้สำหรับดึงข้อมูลจากฐานข้อมูลมาแสดง
 	public function getUsers()
 	{
-		$sql = " select * from users ";
+		$sql = " select * from users";
 		$result = $this->db->query($sql);
         $arrResult = $result->result();
 		return $arrResult;
