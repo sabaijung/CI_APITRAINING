@@ -1,11 +1,11 @@
 <?php 
-
 class Authen extends CI_CONTROLLER
 {
     public function __construct()
     {
-        parent::__construct();
-        $this->load->model('AuthenModel');
+		parent::__construct();
+		//$this->load->model('AuthenModel');
+        $this->load->model('AuthenModel','',TRUE);
     }
 
     public function fetchAll()
