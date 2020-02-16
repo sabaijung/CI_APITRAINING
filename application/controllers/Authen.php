@@ -21,7 +21,7 @@ class Authen extends CI_CONTROLLER
             ->set_content_type('application/json')
             ->set_output(json_encode($results));
 	}
-	
+
 	 public function cancelData()
     {
 	    $result = $this->AuthenModel->cancelData($_GET["username"]);
@@ -34,15 +34,13 @@ class Authen extends CI_CONTROLLER
 					$_GET['password'],$_GET['email'], $_GET['name']);
         echo json_encode($result);
 	}
-	
-	 public function login()
+
+	public function login()
     {
         $results = $this->AuthenModel->login($_GET['username'],$_GET['password']);
-        $this->output
-            ->set_content_type('application/json')
-            ->set_output(json_encode($results));
+        echo json_encode($results);
 	}
-	
+
 
 }
 ?>

@@ -4,12 +4,12 @@ class AuthenModel extends CI_model {
 	public function __construct(){
         parent::__construct();
 	}
-	
+
 	//ใช้สำหรับ ล็อคอิน
 	public function login($username,$password)
 	{
-		$sql = "SELECT * from users 
-		where username ='".$username."' 
+		$sql = "SELECT * from users
+		where username ='".$username."'
 		and password ='".$password."'";
 		$result = $this->db->query($sql);
 		$arrResult = $result->result();
@@ -17,13 +17,13 @@ class AuthenModel extends CI_model {
         if ($rows > 0) {
            $rs = array([
                 'username' => $username,
-                'flag' => "0",
+                'flag' => "1",
                 'message' => "ล็อคอินสำเร็จ",
             ]);
         } else {
             $rs = array([
                 'username' => $username,
-                'flag' => "1",
+                'flag' => "0",
                 'message' => "กรุณาตรวจสอบข้อมูล",
             ]);
         }
