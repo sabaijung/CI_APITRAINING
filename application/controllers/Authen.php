@@ -24,7 +24,6 @@ class Authen extends CI_CONTROLLER
 	
 	 public function cancelData()
     {
-		
 	    $result = $this->AuthenModel->cancelData($_GET["username"]);
         echo json_encode($result);
 	}

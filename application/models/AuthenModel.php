@@ -31,7 +31,7 @@ class AuthenModel extends CI_model {
         return $result;
 	}
 	
-
+	//ใช้สำหรับบันทึกข้อมูลผู้ใช้งานไปยังฐานข้อมูล
 	public function register($username, $password, $email)
     {
         $sql = "SELECT *
