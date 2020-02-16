@@ -12,8 +12,23 @@ class AuthenModel extends CI_model {
 		where username ='".$username."' 
 		and password ='".$password."'";
 		$result = $this->db->query($sql);
-        $arrResult = $result->result();
-		return $arrResult;
+		$arrResult = $result->result();
+		$rows = count($result->result());
+        if ($rows > 0) {
+           $rs = array([
+                'username' => $username,
+                'flag' => "0",
+                'message' => "ล็อคอินสำเร็จ",
+            ]);
+        } else {
+            $rs = array([
+                'username' => $username,
+                'flag' => "1",
+                'message' => "กรุณาตรวจสอบข้อมูล",
+            ]);
+        }
+
+		return $rs;
 	}
 
 	//ใช้สำหรับดึงข้อมูลจากฐานข้อมูลมาแสดง
