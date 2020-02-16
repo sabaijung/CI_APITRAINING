@@ -32,7 +32,7 @@ class AuthenModel extends CI_model {
 	}
 	
 	//ใช้สำหรับบันทึกข้อมูลผู้ใช้งานไปยังฐานข้อมูล
-	public function register($username, $password, $email)
+	public function register($username, $password, $email, $name)
     {
         $sql = "SELECT *
         FROM users
@@ -44,7 +44,7 @@ class AuthenModel extends CI_model {
         if ($rows > 0) {
            $rs = array([
                 'username' => $username,
-                'status' => "0",
+                'flag' => "0",
                 'message' => "ชื่อผู้ใช้งานนี้ เคยลงทะเบียนแล้ว",
             ]);
            
@@ -53,14 +53,15 @@ class AuthenModel extends CI_model {
                 'username' => $username,
                 'password' => $password,
                 'email' => $email,
-                'status' => '1',
+				'status' => '1',
+				'name' => $name
  
             );
             $this->db->insert('users', $insert_data);
         
             $rs = array([
                 'username' => $username,
-                'status' => "1",
+                'flag' => "1",
                 'message' => "ลงทะเบียนสำเร็จ",
             ]);
         }

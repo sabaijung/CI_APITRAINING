@@ -31,7 +31,7 @@ class Authen extends CI_CONTROLLER
 	public function register()
     {
 		$result = $this->AuthenModel->register($_GET['username'],
-					$_GET['password'],$_GET['email']);
+					$_GET['password'],$_GET['email'], $_GET['name']);
         echo json_encode($result);
     }
 	
